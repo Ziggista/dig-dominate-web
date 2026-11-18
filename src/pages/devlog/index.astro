@@ -7,13 +7,17 @@ const posts = await getPosts();
   <section>
     <div class="wrap">
       <h2>Dev log</h2>
-      <p class="sub">What changed in each build, written for players. Newest first.</p>
+      <p class="sub">What changed in each build, written for players. Newest first. Follow along with the <a href="/devlog/rss.xml">RSS feed</a>.</p>
       <ul class="post-list">
         {posts.map((p) => (
-          <li><a href={`/devlog/${p.id}/`}><div class="card">
+          <li><a href={`/devlog/${p.id}/`}><div class="card post-card">
+            {p.data.image && <img class="thumb" src={p.data.image} alt="" loading="lazy" decoding="async" />}
+            <div>
+            <div class="kicker">Dig Log #{p.data.number}</div>
             <h3>{p.data.title}{p.data.build && <span class="tag">{p.data.build}</span>}</h3>
             <div class="meta">{formatDate(p.data.date)}</div>
             <p>{p.data.summary}</p>
+            </div>
           </div></a></li>
         ))}
       </ul>

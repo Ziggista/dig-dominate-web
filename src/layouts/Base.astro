@@ -1,12 +1,18 @@
 ---
 import '../styles/global.css';
 import { SITE } from '../site';
+import Lightbox from '../components/Lightbox.astro';
 
 interface Props { title?: string; description?: string; }
 const { title, description = SITE.tagline } = Astro.props;
 const pageTitle = title ? `${title} | ${SITE.name}` : SITE.name;
 const path = Astro.url.pathname;
-const isDevlog = path.startsWith('/devlog');
+const nav = [
+  { href: '/', label: 'Game', active: path === '/' },
+  { href: '/creatures/', label: 'Creatures', active: path.startsWith('/creatures') },
+  { href: '/devlog/', label: 'Dev log', active: path.startsWith('/devlog') },
+  { href: '/press/', label: 'Press', active: path.startsWith('/press') },
+];
 ---
 <!doctype html>
 <html lang="en">
@@ -28,10 +34,9 @@ const isDevlog = path.startsWith('/devlog');
     {SITE.hideFromSearch && <div class="prerelease">Preview site. The game is in alpha and not released yet.</div>}
     <header class="site-header">
       <div class="wrap">
-        <a class="brand" href="/"><img src="/favicon.svg" alt="" />{SITE.name}</a>
+        <a class="brand" href="/"><img src="/favicon.svg" alt="" /><span class="txt">{SITE.name}</span></a>
         <nav class="nav">
-          <a href="/" aria-current={!isDevlog ? 'page' : undefined}>Game</a>
-          <a href="/devlog/" aria-current={isDevlog ? 'page' : undefined}>Dev log</a>
+          {nav.map((n) => <a href={n.href} aria-current={n.active ? 'page' : undefined}>{n.label}</a>)}
         </nav>
       </div>
     </header>
@@ -41,8 +46,9 @@ const isDevlog = path.startsWith('/devlog');
     <footer class="site-footer">
       <div class="wrap">
         <span>&copy; {new Date().getFullYear()} {SITE.name}</span>
-        <a href="/devlog/rss.xml">Dev log RSS</a>
+        <span><a href="/press/">Press kit</a> · <a href="/devlog/rss.xml">Dev log RSS</a></span>
       </div>
     </footer>
+    <Lightbox />
   </body>
 </html>

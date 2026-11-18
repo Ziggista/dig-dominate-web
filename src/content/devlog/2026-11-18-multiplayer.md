@@ -1,8 +1,11 @@
 ---
+number: 4
 title: Multiplayer is in
 date: 2026-11-18
 build: in development
 summary: Up to four lairs on one map, over LAN or a direct IP address, with pause, rejoin and a lobby with seats.
+image: /screenshots/fight-at-the-heart.webp
+imageAlt: A fight at the heart room
 ---
 
 The first version of multiplayer is now in the game. It has passed our automated tests, and the next step is trying it between real PCs.

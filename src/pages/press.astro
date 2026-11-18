@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../site';
+
+const facts = [
+  ['Title', SITE.name],
+  ['Genre', 'Real-time strategy, underground lair building'],
+  ['Status', 'In development (alpha)'],
+  ['Platform', 'Windows PC'],
+  ['Modes', 'Campaign, skirmish against CPU rivals, multiplayer for 2 to 4 lairs over LAN or direct IP'],
+  ['Release date', 'To be announced'],
+  ['Price', 'To be announced'],
+  ['Website', 'digndom.com'],
+];
+const shots = [
+  ['/screenshots/fight-at-the-heart.webp', 'A fight at the heart'],
+  ['/screenshots/busy-lair.webp', 'A busy lair'],
+  ['/screenshots/swarming-heart.webp', 'Creatures crowding the heart'],
+  ['/screenshots/raid.webp', 'Raiders push in'],
+  ['/screenshots/heart-room.webp', 'The first minutes'],
+  ['/screenshots/doors-traps.webp', 'Doors and traps'],
+];
+---
+<Base title="Press kit" description="Fact sheet, descriptions, logo and screenshots for Dig & Dominate.">
+  <section>
+    <div class="wrap">
+      <h2>Press kit</h2>
+      <p class="sub">Everything you need to write about {SITE.name}. Use any of it freely in coverage.</p>
+      <div class="press-grid">
+        <div class="card">
+          <h3>Fact sheet</h3>
+          <dl class="facts">
+            {facts.map(([k, v]) => (<><dt>{k}</dt><dd>{v}</dd></>))}
+          </dl>
+        </div>
+        <div class="card">
+          <h3>Downloads</h3>
+          <p><a class="btn primary" href="/press/dig-and-dominate-screenshots.zip" download>Screenshots and logo (.zip)</a></p>
+          <p>Full-size 1080p captures, model renders, and the logo as SVG.</p>
+          <div class="logo-pair">
+            <img src="/press/logo-light-text.svg" alt="Dig & Dominate logo, light text" />
+            <img class="on-light" src="/press/logo-dark-text.svg" alt="Dig & Dominate logo, dark text" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="wrap">
+      <h2>Descriptions</h2>
+      <div class="card copy">
+        <h3>Short</h3>
+        <p>{SITE.name} is a real-time strategy game about digging out an underground lair, raising a creature army and outlasting rival lairs.</p>
+        <h3>Long</h3>
+        <p>You start with a heart, a handful of diggers and solid rock. Mark tunnels, claim the ground, and build the rooms that draw creatures in: lairs, treasuries, hatcheries, training grounds and workshops. Every power you cast comes out of the same gold as your rooms, so every choice costs something.</p>
+        <p>Hero parties come down to clear you out, and rival lairs fight you for every tile. Play a campaign of handcrafted levels, take on up to three CPU rivals in skirmish, or face friends in multiplayer matches with up to four lairs on one map.</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="wrap">
+      <h2>Screenshots</h2>
+      <div class="press-shots">
+        {shots.map(([src, cap]) => (
+          <a href={src} data-lightbox data-caption={cap}><img src={src} alt={cap} loading="lazy" decoding="async" /></a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

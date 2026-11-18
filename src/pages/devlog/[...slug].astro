@@ -14,8 +14,14 @@ const { Content } = await render(post);
 <Base title={post.data.title} description={post.data.summary}>
   <article class="prose">
     <a href="/devlog/">&larr; All posts</a>
+    <div class="kicker">Dig Log #{post.data.number}</div>
     <h1>{post.data.title}</h1>
     <div class="meta">{formatDate(post.data.date)}{post.data.build && <span class="tag">{post.data.build}</span>}</div>
+    {post.data.image && (
+      <a class="lead-img" href={post.data.image} data-lightbox data-caption={post.data.imageAlt}>
+        <img src={post.data.image} alt={post.data.imageAlt ?? ''} />
+      </a>
+    )}
     <Content />
   </article>
 </Base>
