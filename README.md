@@ -44,7 +44,7 @@ and only the game's own text and art goes on the site.
 ## Screenshots
 
 Put images in `public/screenshots/` and list them in the `shots` array in
-`src/pages/index.astro`. Until then the page shows labelled placeholders.
+`src/pages/index.astro` with their width, height, alt text and caption. Save them as WebP, about 1200 to 2400 px wide.
 
 ## Deploy on Cloudflare Pages
 
