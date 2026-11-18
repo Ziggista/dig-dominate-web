@@ -1,8 +1,11 @@
 ---
+number: 1
 title: Powers now cost gold
 date: 2026-11-15
 build: alpha 6 rc1
 summary: The mana bar is gone. Every power is paid for from your treasury, creatures learn attacks as they level, and the CPU rival raids at a fairer pace.
+image: /screenshots/heart-room.webp
+imageAlt: A torch-lit heart room with a gold seam nearby
 ---
 
 This was a big build. The headline change is that powers now come out of the same gold pile as your rooms, so you are always choosing between building and casting.

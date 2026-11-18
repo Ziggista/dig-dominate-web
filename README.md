@@ -25,10 +25,13 @@ Add a Markdown file to `src/content/devlog/`. The file name becomes the URL, so
 
 ```md
 ---
+number: 5                 # next Dig Log number
 title: New traps
 date: 2026-12-01
 build: alpha 7 rc1        # optional tag shown next to the title
 summary: One or two sentences for the list page and RSS feed.
+image: /screenshots/fight-at-the-heart.webp   # optional lead image
+imageAlt: A fight at the heart room          # describe the image
 draft: false              # optional; true hides the post
 ---
 
@@ -40,6 +43,12 @@ all of them appear in the RSS feed at `/devlog/rss.xml`.
 
 Writing rules: plain language for players, the game is always called "Dig & Dominate",
 and only the game's own text and art goes on the site.
+
+## Other pages
+
+- `/creatures/`: creature cards from `src/creatures.ts`, images in `public/creatures/` (400x400 WebP).
+- `/press/`: fact sheet, descriptions, logo and a screenshot zip in `public/press/`. Rebuild the zip when the screenshots change.
+- Any `<a href="image" data-lightbox data-caption="...">` opens the image full-screen on click.
 
 ## Screenshots
 

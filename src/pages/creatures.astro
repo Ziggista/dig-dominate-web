@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import { creatures } from '../creatures';
+---
+<Base title="Creatures" description="The creatures who might join your lair in Dig & Dominate, and the heroes who come to clear you out.">
+  <section>
+    <div class="wrap">
+      <h2>Creatures</h2>
+      <p class="sub">Build the right rooms and keep the gold flowing, and these are the creatures who might move in. Each one learns new tricks as it gains experience. Names and models are still work in progress.</p>
+      <div class="creature-grid">
+        {creatures.map((c) => (
+          <article class="card creature">
+            <a href={`/creatures/${c.id}.webp`} data-lightbox data-caption={c.name}>
+              <img src={`/creatures/${c.id}.webp`} width="400" height="400" alt={`${c.name} model`} loading="lazy" decoding="async" />
+            </a>
+            <div class="kicker">{c.role}</div>
+            <h3>{c.name}</h3>
+            <p>{c.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="wrap">
+      <h2>Heroes</h2>
+      <p class="sub">Knights, wizards, monks and worse. Hero parties come down in waves to wreck your rooms and smash your heart. They level up too, so a late raid hits much harder than an early one.</p>
+      <figure class="gallery-one">
+        <a href="/screenshots/heroes.webp" data-lightbox data-caption="Hero line-up (early models)">
+          <img src="/screenshots/heroes.webp" width="2400" height="300" alt="Line-up of eight hero models" loading="lazy" decoding="async" />
+        </a>
+        <figcaption>Early hero models. Final versions are on the way.</figcaption>
+      </figure>
+    </div>
+  </section>
+</Base>

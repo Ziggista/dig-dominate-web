@@ -10,7 +10,7 @@ export const GET: APIRoute = async ({ site }) => {
   const posts = await getPosts();
   const items = posts
     .map((p) => `    <item>
-      <title>${esc(p.data.title)}</title>
+      <title>Dig Log #${p.data.number}: ${esc(p.data.title)}</title>
       <link>${base}/devlog/${p.id}/</link>
       <guid>${base}/devlog/${p.id}/</guid>
       <pubDate>${p.data.date.toUTCString()}</pubDate>

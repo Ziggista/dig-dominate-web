@@ -39,7 +39,7 @@ const latest = (await getPosts()).slice(0, 3);
       <p class="lead">{SITE.tagline} A real-time strategy game about building underground, fighting for every tile, and outlasting rival lairs.</p>
       <div class="btns">
         <a class="btn primary" href="/devlog/">Read the dev log</a>
-        <a class="btn ghost" href="#modes">Ways to play</a>
+        <a class="btn ghost" href="/creatures/">Meet the creatures</a>
       </div>
     </div>
   </div>
@@ -75,7 +75,9 @@ const latest = (await getPosts()).slice(0, 3);
       <div class="gallery">
         {shots.map((s, i) => (
           <figure class={i === 0 ? 'feature' : s.w / s.h > 2 ? 'wide' : ''}>
-            <img src={s.src} width={s.w} height={s.h} alt={s.alt} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" />
+            <a href={s.src} data-lightbox data-caption={s.caption} aria-label={`Enlarge: ${s.alt}`}>
+              <img src={s.src} width={s.w} height={s.h} alt={s.alt} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" />
+            </a>
             <figcaption>{s.caption}</figcaption>
           </figure>
         ))}
@@ -90,6 +92,7 @@ const latest = (await getPosts()).slice(0, 3);
       <ul class="post-list">
         {latest.map((p) => (
           <li><a href={`/devlog/${p.id}/`}><div class="card">
+            <div class="kicker">Dig Log #{p.data.number}</div>
             <h3>{p.data.title}{p.data.build && <span class="tag">{p.data.build}</span>}</h3>
             <div class="meta">{formatDate(p.data.date)}</div>
             <p>{p.data.summary}</p>
