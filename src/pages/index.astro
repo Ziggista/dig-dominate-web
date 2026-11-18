@@ -18,9 +18,13 @@ const modes = [
   { title: 'Multiplayer', text: 'Up to four lairs on one map over LAN or a direct IP address. One player hosts, and dropped players can rejoin.' },
 ];
 
-// Add real screenshots to public/screenshots/ and list them here.
-const shots: { src: string; alt: string }[] = [];
-const placeholders = ['Digging out a new lair', 'A hero raid at the door', 'Four lairs, one map'];
+// Images live in public/screenshots/. Use only this game's own art.
+const shots = [
+  { src: '/screenshots/first-lair.webp', w: 1200, h: 750, alt: 'Top-down view of a young lair: the heart room, a fresh tunnel and a glittering gold seam', caption: 'The first minutes: a heart, a few tunnels and a gold seam waiting to be mined.' },
+  { src: '/screenshots/creatures.webp', w: 1800, h: 514, alt: 'Line-up of thirteen creature models', caption: 'Creatures who might answer your call, if your lair is worth joining.' },
+  { src: '/screenshots/heroes.webp', w: 2400, h: 300, alt: 'Line-up of eight hero models', caption: 'The heroes who come down to clear you out.' },
+  { src: '/screenshots/doors-traps.webp', w: 1800, h: 540, alt: 'Doors and traps from the workshop', caption: 'Doors and traps your workshop can build.' },
+];
 
 const latest = (await getPosts()).slice(0, 3);
 ---
@@ -62,12 +66,15 @@ const latest = (await getPosts()).slice(0, 3);
 
   <section>
     <div class="wrap">
-      <h2>Screenshots</h2>
-      <p class="sub">Work-in-progress captures from the alpha.</p>
-      <div class="shots">
-        {shots.length
-          ? shots.map((s) => <div class="shot"><img src={s.src} alt={s.alt} loading="lazy" /></div>)
-          : placeholders.map((p) => <div class="shot">{p} (screenshot coming)</div>)}
+      <h2>A look inside</h2>
+      <p class="sub">Work-in-progress captures and models from the alpha.</p>
+      <div class="gallery">
+        {shots.map((s, i) => (
+          <figure class={i === 0 ? 'feature' : ''}>
+            <img src={s.src} width={s.w} height={s.h} alt={s.alt} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" />
+            <figcaption>{s.caption}</figcaption>
+          </figure>
+        ))}
       </div>
     </div>
   </section>
