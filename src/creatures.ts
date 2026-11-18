@@ -1,4 +1,5 @@
-// Working names for the creature models. Text is the game's own; no stats from any other game.
+// Names follow the game's own creature kinds (capitalised kind key), except where a name matches
+// the original game's: Mistress -> Lasher, Warlock -> Hexer. Text is the game's own.
 export const creatures = [
   { id: 'beetle', name: 'Beetle', role: 'Front line', text: 'A heavy-shelled brute that soaks up hits and holds a corridor while others do the damage.' },
   { id: 'spider', name: 'Spider', role: 'Ambusher', text: 'Quick on its many legs and happiest lurking where raiders do not look.' },
@@ -10,7 +11,7 @@ export const creatures = [
   { id: 'spawn', name: 'Spawn', role: 'Grows up', text: 'Starts small and scrappy. Raise it far enough and it becomes something much bigger.' },
   { id: 'skeleton', name: 'Skeleton', role: 'Soldier', text: 'Shield up, sword out, never complains about pay.' },
   { id: 'lasher', name: 'Lasher', role: 'Duellist', text: 'Fights up close with a whip and a temper, and gives as good as she gets.' },
-  { id: 'warlock', name: 'Warlock', role: 'Caster', text: 'Studies hard and learns new spells as it levels, from missiles to vanishing.' },
+  { id: 'hexer', name: 'Hexer', role: 'Caster', text: 'Studies hard and learns new spells as it levels, from missiles to vanishing.' },
   { id: 'vampire', name: 'Vampire', role: 'Elite', text: 'Proud, dangerous and very hard to keep down.' },
   { id: 'reaper', name: 'Reaper', role: 'Champion', text: 'The terror of every hero party. Keep it busy, or it will find something to do.' },
 ];
