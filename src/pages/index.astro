@@ -1,0 +1,90 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../site';
+import { getPosts, formatDate } from '../posts';
+
+const features = [
+  { title: 'Dig your own lair', text: 'Mark rock for your diggers, claim the ground they open up, and carve out a lair room by room.' },
+  { title: 'Build rooms that matter', text: 'Treasuries, lairs, training grounds, workshops and more. Size and placement change what each room can do.' },
+  { title: 'Grow a creature army', text: 'Creatures arrive when your lair is worth joining. Train them, pay them, and they learn new attacks as they level up.' },
+  { title: 'Spend gold, not mana', text: 'Your powers draw on the same treasury as your rooms, so every spell is a choice.' },
+  { title: 'Traps and doors', text: 'Build traps that fire in bursts and doors only your side can pass, then watch raiders walk into them.' },
+  { title: 'Command the fight', text: 'Pick creatures up and drop them where they are needed, or give battle orders: guard a spot, rally, or march on a rival.' },
+];
+
+const modes = [
+  { title: 'Campaign', text: 'A run of handcrafted levels with scripted goals, hero raids and rival lairs, plus extra and bonus levels.' },
+  { title: 'Skirmish', text: 'Pick a map and take on one to three CPU rivals. Win by destroying every rival heart.' },
+  { title: 'Multiplayer', text: 'Up to four lairs on one map over LAN or a direct IP address. One player hosts, and dropped players can rejoin.' },
+];
+
+// Add real screenshots to public/screenshots/ and list them here.
+const shots: { src: string; alt: string }[] = [];
+const placeholders = ['Digging out a new lair', 'A hero raid at the door', 'Four lairs, one map'];
+
+const latest = (await getPosts()).slice(0, 3);
+---
+<Base>
+  <div class="hero">
+    <div class="wrap">
+      <h1>Dig <span class="amp">&amp;</span> Dominate</h1>
+      <p class="lead">{SITE.tagline} A real-time strategy game about building underground, fighting for every tile, and outlasting rival lairs.</p>
+      <div class="btns">
+        <a class="btn primary" href="/devlog/">Read the dev log</a>
+        <a class="btn ghost" href="#modes">Ways to play</a>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2>What it is</h2>
+      <p class="sub">You start with a heart, a handful of diggers and solid rock. Everything else you have to take: gold from the seams, ground from your rivals, and creatures who only stay while you keep them paid.</p>
+      <div class="grid">
+        {features.map((f) => (
+          <div class="card"><h3>{f.title}</h3><p>{f.text}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="modes">
+    <div class="wrap">
+      <h2>Ways to play</h2>
+      <p class="sub">Play alone against the campaign, against CPU rivals, or against friends.</p>
+      <div class="grid">
+        {modes.map((m) => (
+          <div class="card"><h3>{m.title}</h3><p>{m.text}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Screenshots</h2>
+      <p class="sub">Work-in-progress captures from the alpha.</p>
+      <div class="shots">
+        {shots.length
+          ? shots.map((s) => <div class="shot"><img src={s.src} alt={s.alt} loading="lazy" /></div>)
+          : placeholders.map((p) => <div class="shot">{p} (screenshot coming)</div>)}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Latest from the dev log</h2>
+      <p class="sub">Plain-language notes on what changed in each build.</p>
+      <ul class="post-list">
+        {latest.map((p) => (
+          <li><a href={`/devlog/${p.id}/`}><div class="card">
+            <h3>{p.data.title}{p.data.build && <span class="tag">{p.data.build}</span>}</h3>
+            <div class="meta">{formatDate(p.data.date)}</div>
+            <p>{p.data.summary}</p>
+          </div></a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>
