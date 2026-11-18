@@ -58,7 +58,7 @@ Put images in `public/screenshots/` and list them in the `shots` array in
 3. Environment variables (Production and Preview):
    - `NODE_VERSION` = `22`
    - `SITE_URL` = the site's final address, for example `https://dig-dominate.pages.dev` or a
-     custom domain. It is used for links in the RSS feed.
+     custom domain. It is used for links in the RSS feed. Defaults to https://digndom.com.
 4. Save and deploy. Every push to `main` deploys production, and every other branch or pull
    request gets its own preview URL.
 5. Optional: add a custom domain under the project's **Custom domains** tab.
