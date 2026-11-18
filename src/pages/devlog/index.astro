@@ -1,0 +1,22 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getPosts, formatDate } from '../../posts';
+const posts = await getPosts();
+---
+<Base title="Dev log" description="What changed in each build of Dig & Dominate, in plain language.">
+  <section>
+    <div class="wrap">
+      <h2>Dev log</h2>
+      <p class="sub">What changed in each build, written for players. Newest first.</p>
+      <ul class="post-list">
+        {posts.map((p) => (
+          <li><a href={`/devlog/${p.id}/`}><div class="card">
+            <h3>{p.data.title}{p.data.build && <span class="tag">{p.data.build}</span>}</h3>
+            <div class="meta">{formatDate(p.data.date)}</div>
+            <p>{p.data.summary}</p>
+          </div></a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>
