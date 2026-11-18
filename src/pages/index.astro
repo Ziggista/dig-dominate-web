@@ -21,6 +21,7 @@ const modes = [
 // Images live in public/screenshots/. Use only this game's own art.
 const shots = [
   { src: '/screenshots/fight-at-the-heart.webp', w: 1600, h: 900, alt: 'Armoured beetle creatures defending the heart room while a fight spills across the lair', caption: 'A fight at the heart. Everyone nearby drops what they are doing and comes running.' },
+  { src: '/screenshots/treasury-fight.webp', w: 1600, h: 900, alt: 'Beetles and flies defending a treasury full of gold piles next to the heart', caption: 'Guarding the gold. A full treasury is worth fighting for.' },
   { src: '/screenshots/busy-lair.webp', w: 1200, h: 900, alt: 'A busy lair: creatures moving between the heart, a hatchery and freshly dug rooms', caption: 'A lair coming to life, with rooms full of creatures going about their business.' },
   { src: '/screenshots/swarming-heart.webp', w: 1200, h: 900, alt: 'Creatures swarming around the heart room as new arrivals pour in', caption: 'Word gets around, and new arrivals crowd in around the heart.' },
   { src: '/screenshots/raid.webp', w: 1600, h: 900, alt: 'Raiders pushing in through the rooms beyond the heart while defenders gather', caption: 'Raiders push in from the far rooms. Your creatures gather to meet them.' },
@@ -34,6 +35,11 @@ const latest = (await getPosts()).slice(0, 3);
 ---
 <Base>
   <div class="hero">
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="/video/hero-poster.webp" aria-hidden="true">
+      <source src="/video/hero-loop.webm" type="video/webm" />
+      <source src="/video/hero-loop.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-shade"></div>
     <div class="wrap">
       <h1>Dig <span class="amp">&amp;</span> Dominate</h1>
       <p class="lead">{SITE.tagline} A real-time strategy game about building underground, fighting for every tile, and outlasting rival lairs.</p>
