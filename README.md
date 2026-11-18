@@ -7,6 +7,8 @@ Cloudflare Pages.
 > Pre-release: every page carries `noindex` and `robots.txt` blocks crawlers. Before launch,
 > set `hideFromSearch: false` in `src/site.ts` and change `public/robots.txt` to `Allow: /`.
 
+See `WEBAGENT.md` for the rules, current state and open work.
+
 ## Run it locally
 
 Needs Node 22 (see `.nvmrc`).
