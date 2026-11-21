@@ -1,110 +1,19 @@
 ---
 import Base from '../layouts/Base.astro';
 import { SITE } from '../site';
-import { getPosts, formatDate } from '../posts';
-
-const features = [
-  { title: 'Dig your own lair', text: 'Mark rock for your diggers, claim the ground they open up, and carve out a lair room by room.' },
-  { title: 'Build rooms that matter', text: 'Treasuries, lairs, training grounds, workshops and more. Size and placement change what each room can do.' },
-  { title: 'Grow a creature army', text: 'Creatures arrive when your lair is worth joining. Train them, pay them, and they learn new attacks as they level up.' },
-  { title: 'Spend gold, not mana', text: 'Your powers draw on the same treasury as your rooms, so every spell is a choice.' },
-  { title: 'Traps and doors', text: 'Build traps that fire in bursts and doors only your side can pass, then watch raiders walk into them.' },
-  { title: 'Command the fight', text: 'Pick creatures up and drop them where they are needed, or give battle orders: guard a spot, rally, or march on a rival.' },
-];
-
-const modes = [
-  { title: 'Campaign', text: 'A run of handcrafted levels with scripted goals, hero raids and rival lairs, plus extra and bonus levels.' },
-  { title: 'Skirmish', text: 'Pick a map and take on one to three CPU rivals. Win by destroying every rival heart.' },
-  { title: 'Multiplayer', text: 'Up to four lairs on one map over LAN or a direct IP address. One player hosts, and dropped players can rejoin.' },
-];
-
-// Images live in public/screenshots/. Use only this game's own art.
-const shots = [
-  { src: '/screenshots/fight-at-the-heart.webp', w: 1600, h: 900, alt: 'Armoured beetle creatures defending the heart room while a fight spills across the lair', caption: 'A fight at the heart. Everyone nearby drops what they are doing and comes running.' },
-  { src: '/screenshots/treasury-fight.webp', w: 1600, h: 900, alt: 'Beetles and flies defending a treasury full of gold piles next to the heart', caption: 'Guarding the gold. A full treasury is worth fighting for.' },
-  { src: '/screenshots/busy-lair.webp', w: 1200, h: 900, alt: 'A busy lair: creatures moving between the heart, a hatchery and freshly dug rooms', caption: 'A lair coming to life, with rooms full of creatures going about their business.' },
-  { src: '/screenshots/swarming-heart.webp', w: 1200, h: 900, alt: 'Creatures swarming around the heart room as new arrivals pour in', caption: 'Word gets around, and new arrivals crowd in around the heart.' },
-  { src: '/screenshots/raid.webp', w: 1600, h: 900, alt: 'Raiders pushing in through the rooms beyond the heart while defenders gather', caption: 'Raiders push in from the far rooms. Your creatures gather to meet them.' },
-  { src: '/screenshots/heart-room.webp', w: 1600, h: 900, alt: 'A torch-lit heart room deep in the rock, with a digger at work and a glittering gold seam nearby', caption: 'The first minutes: a heart, a few tunnels and a gold seam waiting to be mined.' },
-  { src: '/screenshots/creatures.webp', w: 1800, h: 514, alt: 'Line-up of thirteen creature models', caption: 'Creatures who might answer your call, if your lair is worth joining.' },
-  { src: '/screenshots/heroes.webp', w: 2400, h: 300, alt: 'Line-up of eight hero models', caption: 'The heroes who come down to clear you out.' },
-  { src: '/screenshots/doors-traps.webp', w: 1800, h: 540, alt: 'Doors and traps from the workshop', caption: 'Doors and traps your workshop can build.' },
-];
-
-const latest = (await getPosts()).slice(0, 3);
 ---
-<Base>
-  <div class="hero">
+<Base title="Coming soon">
+  <main class="hero soon">
     <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="/video/hero-poster.webp" aria-hidden="true">
       <source src="/video/hero-loop.webm" type="video/webm" />
       <source src="/video/hero-loop.mp4" type="video/mp4" />
     </video>
     <div class="hero-shade"></div>
     <div class="wrap">
+      <img class="soon-mark" src="/favicon.svg" alt="" width="64" height="64" />
       <h1>Dig <span class="amp">&amp;</span> Dominate</h1>
-      <p class="lead">{SITE.tagline} A real-time strategy game about building underground, fighting for every tile, and outlasting rival lairs.</p>
-      <div class="btns">
-        <a class="btn primary" href="/devlog/">Read the dev log</a>
-        <a class="btn ghost" href="/creatures/">Meet the creatures</a>
-      </div>
+      <p class="lead">{SITE.tagline}</p>
+      <p class="soon-badge">Coming soon</p>
     </div>
-  </div>
-
-  <section>
-    <div class="wrap">
-      <h2>What it is</h2>
-      <p class="sub">You start with a heart, a handful of diggers and solid rock. Everything else you have to take: gold from the seams, ground from your rivals, and creatures who only stay while you keep them paid.</p>
-      <div class="grid">
-        {features.map((f) => (
-          <div class="card"><h3>{f.title}</h3><p>{f.text}</p></div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section id="modes">
-    <div class="wrap">
-      <h2>Ways to play</h2>
-      <p class="sub">Play alone against the campaign, against CPU rivals, or against friends.</p>
-      <div class="grid">
-        {modes.map((m) => (
-          <div class="card"><h3>{m.title}</h3><p>{m.text}</p></div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <h2>A look inside</h2>
-      <p class="sub">Work-in-progress captures and models from the alpha.</p>
-      <div class="gallery">
-        {shots.map((s, i) => (
-          <figure class={i === 0 ? 'feature' : s.w / s.h > 2 ? 'wide' : ''}>
-            <a href={s.src} data-lightbox data-caption={s.caption} aria-label={`Enlarge: ${s.alt}`}>
-              <img src={s.src} width={s.w} height={s.h} alt={s.alt} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" />
-            </a>
-            <figcaption>{s.caption}</figcaption>
-          </figure>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <h2>Latest from the dev log</h2>
-      <p class="sub">Plain-language notes on what changed in each build.</p>
-      <ul class="post-list">
-        {latest.map((p) => (
-          <li><a href={`/devlog/${p.id}/`}><div class="card">
-            <div class="kicker">Dig Log #{p.data.number}</div>
-            <h3>{p.data.title}{p.data.build && <span class="tag">{p.data.build}</span>}</h3>
-            <div class="meta">{formatDate(p.data.date)}</div>
-            <p>{p.data.summary}</p>
-          </div></a></li>
-        ))}
-      </ul>
-    </div>
-  </section>
+  </main>
 </Base>
