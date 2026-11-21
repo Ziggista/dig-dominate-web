@@ -5,7 +5,19 @@ Read this before changing anything. `README.md` covers the day-to-day how-to (ru
 locally, writing posts, deploy settings). This file covers the rules, the current state and
 what is left to do.
 
-Last updated 2026-11-18, after PR #9.
+Last updated 2026-11-21.
+
+## Current state: a single "Coming soon" page (2026-11-21)
+
+Krystin cut the site back to one page: the title, the tagline and a "Coming soon" badge over the
+looping gameplay video, in the same colours and fonts. Everything else is removed: the game
+page sections, creatures page, dev log and RSS, press kit, screenshots and lightbox.
+
+**Bringing the full site back:** all of it is in git history. The last full version is commit
+`4a10ca0` (PR #10). Restore files with
+`git checkout 4a10ca0 -- src public README.md`, then re-apply the coming-soon changes as
+needed. The sections below describe that full version, so treat them as reference for when it
+returns.
 
 ## Rules from the owner (Krystin), do not break these
 

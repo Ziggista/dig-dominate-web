@@ -1,6 +1,6 @@
 # Dig & Dominate website
 
-The public site for **Dig & Dominate**: a game page and a dev log. It is a static
+The public site for **Dig & Dominate**, currently a single "Coming soon" page. It is a static
 [Astro](https://astro.build) site with no database and no server code, built to deploy on
 Cloudflare Pages.
 
@@ -19,43 +19,6 @@ npm run dev      # http://localhost:4321
 npm run build    # writes the site to dist/
 npm run preview  # serves dist/
 ```
-
-## Write a dev log post
-
-Add a Markdown file to `src/content/devlog/`. The file name becomes the URL, so
-`2026-12-01-new-traps.md` is served at `/devlog/2026-12-01-new-traps/`.
-
-```md
----
-number: 5                 # next Dig Log number
-title: New traps
-date: 2026-12-01
-build: alpha 7 rc1        # optional tag shown next to the title
-summary: One or two sentences for the list page and RSS feed.
-image: /screenshots/fight-at-the-heart.webp   # optional lead image
-imageAlt: A fight at the heart room          # describe the image
-draft: false              # optional; true hides the post
----
-
-Body in plain Markdown.
-```
-
-Posts are sorted newest first on `/devlog/`, the three newest show on the home page, and
-all of them appear in the RSS feed at `/devlog/rss.xml`.
-
-Writing rules: plain language for players, the game is always called "Dig & Dominate",
-and only the game's own text and art goes on the site.
-
-## Other pages
-
-- `/creatures/`: creature cards from `src/creatures.ts`, images in `public/creatures/` (400x400 WebP).
-- `/press/`: fact sheet, descriptions, logo and a screenshot zip in `public/press/`. Rebuild the zip when the screenshots change.
-- Any `<a href="image" data-lightbox data-caption="...">` opens the image full-screen on click.
-
-## Screenshots
-
-Put images in `public/screenshots/` and list them in the `shots` array in
-`src/pages/index.astro` with their width, height, alt text and caption. Save them as WebP, about 1200 to 2400 px wide.
 
 ## Deploy on Cloudflare Pages
 
@@ -76,14 +39,6 @@ Put images in `public/screenshots/` and list them in the `shots` array in
 
 ## Layout
 
-```
-src/
-  site.ts                 site name, tagline, pre-release switch
-  content.config.ts       dev log collection schema
-  content/devlog/*.md     dev log posts
-  layouts/Base.astro      header, footer, meta tags
-  pages/index.astro       game page
-  pages/devlog/           post list, post pages, RSS feed
-  styles/global.css       all styles
-public/                   favicon, robots.txt, screenshots
-```
+The site is currently a single "Coming soon" page (`src/pages/index.astro`) over the
+looping video in `public/video/`. The full site (game page, creatures, dev log, press kit)
+is in git history at commit `4a10ca0`. See `WEBAGENT.md`.

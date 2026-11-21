@@ -1,18 +1,10 @@
 ---
 import '../styles/global.css';
 import { SITE } from '../site';
-import Lightbox from '../components/Lightbox.astro';
 
 interface Props { title?: string; description?: string; }
 const { title, description = SITE.tagline } = Astro.props;
 const pageTitle = title ? `${title} | ${SITE.name}` : SITE.name;
-const path = Astro.url.pathname;
-const nav = [
-  { href: '/', label: 'Game', active: path === '/' },
-  { href: '/creatures/', label: 'Creatures', active: path.startsWith('/creatures') },
-  { href: '/devlog/', label: 'Dev log', active: path.startsWith('/devlog') },
-  { href: '/press/', label: 'Press', active: path.startsWith('/press') },
-];
 ---
 <!doctype html>
 <html lang="en">
@@ -23,32 +15,13 @@ const nav = [
     <meta name="description" content={description} />
     {SITE.hideFromSearch && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="alternate" type="application/rss+xml" title={`${SITE.name} dev log`} href="/devlog/rss.xml" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content={new URL("/screenshots/fight-at-the-heart.webp", Astro.site).toString()} />
+    <meta property="og:image" content={new URL('/video/hero-poster.webp', Astro.site).toString()} />
     <meta name="theme-color" content="#15100d" />
   </head>
   <body>
-    {SITE.hideFromSearch && <div class="prerelease">Preview site. The game is in alpha and not released yet.</div>}
-    <header class="site-header">
-      <div class="wrap">
-        <a class="brand" href="/"><img src="/favicon.svg" alt="" /><span class="txt">{SITE.name}</span></a>
-        <nav class="nav">
-          {nav.map((n) => <a href={n.href} aria-current={n.active ? 'page' : undefined}>{n.label}</a>)}
-        </nav>
-      </div>
-    </header>
-    <main>
-      <slot />
-    </main>
-    <footer class="site-footer">
-      <div class="wrap">
-        <span>&copy; {new Date().getFullYear()} {SITE.name}</span>
-        <span><a href="/press/">Press kit</a> · <a href="/devlog/rss.xml">Dev log RSS</a></span>
-      </div>
-    </footer>
-    <Lightbox />
+    <slot />
   </body>
 </html>
